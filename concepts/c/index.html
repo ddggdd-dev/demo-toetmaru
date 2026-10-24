@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="ko"><head><meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="demo" content="가상 업체 · 시연용">
+<title>(가상) 툇마루집수리 · 견본 C 전과 후 — 가상 업체 · 시연용</title>
+<meta name="description" content="가상 업체 · 시연용. 전북 완주 시골집 고치기 견본 C.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#1B1A18; --paper:#F2EEE6; --ink:#1B1A18; --soft:#6F6A62; --line:#D9D2C5;
+  --persimmon:#D9783A; /* 늦가을 감 — 가상 업체라 실물 없음, 완주 시골 마당에서 */
+  --serif:"Nanum Myeongjo",serif; --sans:"Pretendard Variable",Pretendard,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.75 var(--sans);word-break:keep-all;-webkit-text-size-adjust:100%}
+a{color:inherit}
+.demo{font-size:13px;color:#BDB6AA;background:var(--bg);text-align:center;padding:8px 16px}
+.hero{background:var(--bg);color:#F2EEE6}
+.top{display:flex;justify-content:space-between;align-items:center;max-width:1280px;margin:0 auto;padding:16px 20px}
+.brand{font-family:var(--serif);font-weight:700;font-size:19px;text-decoration:none;padding:10px 0}
+.top-tel{font-size:14px;color:#BDB6AA;text-decoration:none;white-space:nowrap;padding:10px 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:4px;max-width:1280px;margin:0 auto}
+.split figure{position:relative}
+.split img{display:block;width:100%;height:min(54vh,560px);object-fit:cover}
+.split .tag{position:absolute;left:12px;top:12px;font-size:13px;letter-spacing:.08em;background:rgba(27,26,24,.72);color:#F2EEE6;padding:4px 10px}
+.split .after .tag{background:var(--persimmon);color:#1B1A18}
+.hcap{max-width:1280px;margin:0 auto;padding:8px 20px 0;font-size:13px;color:#A39C90}
+.htext{max-width:1280px;margin:0 auto;padding:36px 20px 64px;display:grid;grid-template-columns:7fr 5fr;gap:32px;align-items:end}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.6vw,3.6rem);line-height:1.3}
+.lead{color:#CFC8BC;margin-top:14px}
+.cta{display:grid;gap:10px;justify-items:start}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;background:#EADFC8;color:#1B1A18;font-weight:700;text-decoration:none}
+.tel{font-size:15px;color:#BDB6AA;white-space:nowrap}
+section.family{max-width:1040px;margin:0 auto;padding:80px 20px}
+.family h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.35}
+.family ol{list-style:none;padding:0;margin-top:36px;display:grid;gap:0}
+.family li{display:grid;grid-template-columns:72px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line)}
+.family li:last-child{border-bottom:1px solid var(--line)}
+.family .n{font-family:var(--serif);font-size:30px;color:var(--persimmon);line-height:1.2}
+.family b{display:block;font-weight:600;font-size:18px}
+.family p{color:#4A453E}
+footer{border-top:1px solid var(--line);padding:28px 20px 120px;font-size:13px;color:var(--soft);max-width:1040px;margin:0 auto}
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(27,26,24,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(110%);transition:transform .25s}
+.bar.on{transform:none}
+.bar a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;background:var(--persimmon);color:#1B1A18;font-weight:700;text-decoration:none;white-space:nowrap}
+.bar span{font-size:14px}
+@media (max-width:760px){
+  .split img{height:auto;aspect-ratio:3/4}
+  .split .before img{object-position:30% 50%}
+  .split .after img{object-position:45% 50%}
+  .htext{grid-template-columns:1fr;padding:28px 20px 52px}
+  .btn{width:100%}.cta{justify-items:stretch}
+  .family li{grid-template-columns:48px 1fr}
+}
+</style>
+</head>
+<body>
+<p class="demo">가상 업체 · 시연용 — 실제 업체가 아닙니다. 전화번호도 걸리지 않는 번호입니다.</p>
+<div class="hero">
+  <header class="top">
+    <a class="brand" href="#">툇마루집수리</a>
+    <a class="top-tel" href="tel:01000000000">010-0000-0000</a>
+  </header>
+  <div class="split">
+    <figure class="before"><img src="img/ref-ba1-before.jpg" width="1200" height="900" alt="지붕이 낡고 마당에 마른 풀이 쌓인 시골집"><span class="tag">고치기 전</span></figure>
+    <figure class="after"><img src="img/ref-ba1-after.jpg" width="1200" height="900" alt="기와지붕과 나무 문을 새로 한 시골집"><span class="tag">고친 뒤</span></figure>
+  </div>
+  <p class="hcap">참고 사진 · 전과 후는 서로 다른 집 · 저희 공사 아님</p>
+  <div class="htext">
+    <div>
+      <h1>툇마루에 앉고 싶은 집으로</h1>
+      <p class="lead">전북 완주에서 시골집 고치는 일 20년. 완주·진안·임실·익산까지 갑니다.</p>
+    </div>
+    <div class="cta">
+      <a class="btn" id="heroCall" href="tel:01000000000">전화 상담</a>
+      <span class="tel">010-0000-0000 · 일요일 휴무</span>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="family">
+    <h2>맡기기 전에 알아 두실 네 가지</h2>
+    <ol>
+      <li><span class="n">1</span><div><b>견적 보러 가는 건 돈을 받지 않습니다</b><p>현장에 가서 보고 견적을 드립니다.</p></div></li>
+      <li><span class="n">2</span><div><b>공사하는 동안 매일 저녁, 사진을 카톡으로</b><p>매일 저녁 사진을 찍어 카톡으로 보내 드립니다.</p></div></li>
+      <li><span class="n">3</span><div><b>말 없이 더 받지 않습니다</b><p>뜯어 봐서 썩은 데가 나오면 사진을 보내 드리고, 말씀드린 다음에 합니다.</p></div></li>
+      <li><span class="n">4</span><div><b>끝난 뒤 1년</b><p>하자가 나면 와서 봐 드립니다.</p></div></li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  <p>(가상) 툇마루집수리 · 대표 최마루 · 전북 완주군 · 010-0000-0000 · 일요일 휴무</p>
+  <p>가상 업체 · 시연용 견본 C(전과 후). 사진: Unsplash 무료 사진(참고 이미지). 2026-10-24</p>
+</footer>
+
+<div class="bar" id="bar" aria-hidden="true"><span>전화 상담 · 일요일 휴무</span><a href="tel:01000000000" tabindex="-1">010-0000-0000</a></div>
+<script>
+const bar=document.getElementById('bar'),h=document.getElementById('heroCall');
+new IntersectionObserver(([e])=>{const on=!e.isIntersecting&&e.boundingClientRect.top<0;bar.classList.toggle('on',on);bar.setAttribute('aria-hidden',!on);bar.querySelector('a').tabIndex=on?0:-1}).observe(h);
+</script>
+
+
+</body></html>
